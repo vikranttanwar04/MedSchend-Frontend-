@@ -4,6 +4,7 @@ import axios from "axios";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/loader/loader";
+import api from "../api.js";
 
 
 export default function UserAppointments() {
@@ -16,7 +17,7 @@ export default function UserAppointments() {
     useEffect(() => {
         const fetchAppointments = async () => {
             try {
-                const res = await axios.get('http://localhost:8080/appointment/getUserAppointments', { params: { id: user._id }, withCredentials: true });
+                const res = await api.get('/appointment/getUserAppointments', { params: { id: user._id }, withCredentials: true });
                 setAppointments(res.data);
             } catch (err) {
                 const errMsg = err.response?.data?.message || err.message
