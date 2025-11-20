@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import FlashMsg from "./../messages/FlashMsg";
 import Loader from "../loader/loader";
+import api from "../api.js";
 
 
 export default function AllSignin() {
@@ -24,11 +25,11 @@ export default function AllSignin() {
     const onFormSubmit = async (e) => {
         setShowLoader(true);
         e.preventDefault();
-        const url = signUpFor.user ? 'http://localhost:8080/patient/auth/login' : 'http://localhost:8080/doctor/auth/login';
+        const url = signUpFor.user ? '/patient/auth/login' : '/doctor/auth/login';
         try {
-            await axios.post(url, data, { withCredentials: true, headers: { "Content-Type": "application/json" } });
+            await api.post(url, data, { withCredentials: true, headers: { "Content-Type": "application/json" } });
 
-            const res = await axios.get('http://localhost:8080/getme', { withCredentials: true });
+            const res = await api.get('/getme', { withCredentials: true });
             setUser(res.data.user);
             setFlash(prev => ({ ...prev, status: "success", message: "You're successfully logged in!" }));
             (res.data.user.role === "patient") ? navigate('/userprofile') : navigate('/doctor/profile');
