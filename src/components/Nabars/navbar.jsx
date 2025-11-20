@@ -3,6 +3,7 @@ import { useAuth } from "../../context/authContext";
 import axios from "axios";
 import { useState } from "react";
 import Logo from "./../../assets/medsched-logo.png";
+import api from "../api.js";
 
 
 export default function Navbar() {
@@ -13,7 +14,7 @@ export default function Navbar() {
 
     const onLogoutClick = async () => {
         try {
-            await axios.post("http://localhost:8080/logout", {}, { withCredentials: true });
+            await api.post("http://localhost:8080/logout", {}, { withCredentials: true });
 
             setUser(null);
             setIsLogoHide(true);
