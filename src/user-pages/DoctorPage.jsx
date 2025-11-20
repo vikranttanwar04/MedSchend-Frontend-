@@ -5,6 +5,7 @@ import axios from "axios";
 import { useFetch } from "../context/fetchContext";
 import Book from "./Book";
 import FlashMsg from "../components/messages/FlashMsg";
+import api from "../api.js";
 
 
 export default function DoctorPage() {
@@ -21,7 +22,7 @@ export default function DoctorPage() {
     useEffect(() => {
         const doctorById = async () => {
             try {
-                const res = await axios.get("http://localhost:8080/getTheDoctor", { params: { id: id }, withCredentials: true });
+                const res = await api.get("/getTheDoctor", { params: { id: id }, withCredentials: true });
                 setDoctor(prev => ({ ...prev, info: res.data.doctor, slotes: res.data.slotes }))
             } catch (err) {
                 const errMsg = err.response?.data?.message || err.message
