@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext"
 import axios from "axios";
+import api from "../api.js";
 
 
 export default function Book({ setIsBookingWindowOpen, doctor, selectedDateAndTime, setFlash }) {
@@ -70,7 +71,7 @@ export default function Book({ setIsBookingWindowOpen, doctor, selectedDateAndTi
     const onFormSubmit = async(e) => {
         e.preventDefault();
         try{
-            const res = await axios.post('http://localhost:8080/appointment/book', { bookingData }, { params: { id: selectedDateAndTime.bookingtimeSloteId }, withCredentials: true });
+            const res = await api.post('/appointment/book', { bookingData }, { params: { id: selectedDateAndTime.bookingtimeSloteId }, withCredentials: true });
             res && setIsBookingWindowOpen(false);  // close booking window
             res && setFlash(prev => ({...prev, status: "success", message: "Appointment Booked Successfully."}));
         }catch(err){
