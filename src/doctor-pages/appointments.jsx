@@ -4,11 +4,11 @@ import axios from "axios";
 import { useAuth } from "../context/authContext";
 import Loader from "../components/loader/loader";
 import FlashMsg from "../components/messages/FlashMsg";
+import api from "../api.js";
 
 
 export default function DoctorAppointments() {
-
-    // const [doctorPatientData, setDoctorPatientData] = useState({currentAppointments: "", totalPatients: ""});
+    
     const { user } = useAuth();
     const [allAppointments, setAllAppointments] = useState([]);
     const [refresh, setRefresh] = useState(true);
@@ -19,7 +19,7 @@ export default function DoctorAppointments() {
     useEffect(() => {
         const fetchAppointments = async () => {
             try {
-                const res = await axios.get("http://localhost:8080/doctor/getAllAppointments", { params: { id: user._id }, withCredentials: true })
+                const res = await api.get("/doctor/getAllAppointments", { params: { id: user._id }, withCredentials: true })
                 setAllAppointments(res.data);
             } catch (error) {
                 const errMsg = error.response?.data?.message || error.message
@@ -34,7 +34,7 @@ export default function DoctorAppointments() {
 
     const onCompleteClick = async (appointment) => {
         try {
-            const res = await axios.post("http://localhost:8080/appointment/completed", {}, { params: { id: appointment._id }, withCredentials: true })
+            const res = await api.post("/appointment/completed", {}, { params: { id: appointment._id }, withCredentials: true })
             res && setRefresh(!refresh);
             setFlash({ status: "warn", message: res.data.message });
         } catch (err) {
@@ -46,7 +46,7 @@ export default function DoctorAppointments() {
 
     const onCancelBookingClick = async (appointment) => {
         try {
-            const res = await axios.post("http://localhost:8080/appointment/cancelled", {}, { params: { id: appointment._id }, withCredentials: true })
+            const res = await api.post("appointment/cancelled", {}, { params: { id: appointment._id }, withCredentials: true })
             res && setRefresh(!refresh);
             setFlash({ status: "warn", message: res.data.message });
         } catch (err) {
