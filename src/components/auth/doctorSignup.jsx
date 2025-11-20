@@ -8,6 +8,7 @@ import Loader from "../loader/loader";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import api from "../api.js";
 
 export default function DoctorSignup() {
     const navigate = useNavigate();
@@ -128,9 +129,9 @@ export default function DoctorSignup() {
         parsedData.append("data", JSON.stringify(requiredData));
 
         try {
-            await axios.post('http://localhost:8080/doctor/auth/signup', parsedData, { withCredentials: true });
+            await api.post('/doctor/auth/signup', parsedData, { withCredentials: true });
 
-            const res = await axios.get('http://localhost:8080/getme', { withCredentials: true });
+            const res = await api.get('/getme', { withCredentials: true });
             setUser(res.data.user);
             setFlash(prev => ({ ...prev, status: "success", message: "You're successfully signed up!" }));
 
