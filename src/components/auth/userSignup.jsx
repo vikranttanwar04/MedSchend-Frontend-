@@ -8,6 +8,7 @@ import FlashMsg from "../messages/FlashMsg";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import api from "../api.js";
 
 
 export default function UserSignup() {
@@ -118,9 +119,9 @@ export default function UserSignup() {
         parsedData.append('data', JSON.stringify(requiredData));
 
         try {
-            await axios.post('http://localhost:8080/patient/auth/signup', parsedData, { withCredentials: true });
+            await api.post('/patient/auth/signup', parsedData, { withCredentials: true });
 
-            const res = await axios.get('http://localhost:8080/getme', { withCredentials: true });
+            const res = await api.get('/getme', { withCredentials: true });
             setUser(res.data.user);
             navigate('/userprofile', { state: { user: res.data.user } });
         } catch (err) {
