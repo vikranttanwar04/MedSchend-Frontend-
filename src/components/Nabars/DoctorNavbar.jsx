@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { useState } from "react";
 import Logo from "./../../assets/medsched-logo.png";
+import api from "../api.js";
 
 
 export default function DoctorNavbar() {
@@ -12,7 +13,7 @@ export default function DoctorNavbar() {
 
     const onLogoutClick = async () => {
         try {
-            await axios.post("http://localhost:8080/logout", {}, { withCredentials: true });
+            await api.post("/logout", {}, { withCredentials: true });
 
             setUser(null);
             setIsLogoHide(true);
