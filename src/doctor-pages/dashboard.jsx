@@ -26,7 +26,7 @@ export default function DoctorDash() {
     useEffect(() => {
         async function fetchSlotes() {
             try {
-                const res = await api.get("http://localhost:8080/doctor/getAllSlotes", { params: { id: user._id }, withCredentials: true });
+                const res = await api.get("/doctor/getAllSlotes", { params: { id: user._id }, withCredentials: true });
                 const futureDatesOnly = res?.data?.filter((el) => new Date(el.date).setHours(0, 0, 0, 0) >= new Date().setHours(0, 0, 0, 0))
                 futureDatesOnly.length > 0 &&
                     setSlotes(futureDatesOnly);
@@ -47,7 +47,7 @@ export default function DoctorDash() {
     useEffect(() => {
         const fetchAppointments = async () => {
             try {
-                const res = await api.get("http://localhost:8080/doctor/getAllAppointments", { params: { id: user._id }, withCredentials: true })
+                const res = await api.get("/doctor/getAllAppointments", { params: { id: user._id }, withCredentials: true })
                 const appointments = [];
                 for (let i = 0; i < 5; i++) {
                     appointments.push(res.data[i]);
@@ -73,7 +73,7 @@ export default function DoctorDash() {
 
     const onCompleteClick = async (appointment) => {
         try {
-            const res = await api.post("http://localhost:8080/appointment/completed", {}, { params: { id: appointment._id }, withCredentials: true })
+            const res = await api.post("/appointment/completed", {}, { params: { id: appointment._id }, withCredentials: true })
             res && setRefresh(!refresh);
             setFlash({ status: "success", message: res.data.message });
         } catch (err) {
@@ -85,7 +85,7 @@ export default function DoctorDash() {
 
     const onCancelBookingClick = async (appointment) => {
         try {
-            const res = await api.post("http://localhost:8080/appointment/cancelled", {}, { params: { id: appointment._id }, withCredentials: true })
+            const res = await api.post("/appointment/cancelled", {}, { params: { id: appointment._id }, withCredentials: true })
             res && setRefresh(!refresh);
             setFlash({ status: "warn", message: res.data.message });
         } catch (err) {
