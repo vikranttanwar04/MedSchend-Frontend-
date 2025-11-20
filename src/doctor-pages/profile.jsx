@@ -5,6 +5,7 @@ import axios from "axios";
 import FlashMsg from "../components/messages/FlashMsg";
 import Loader from "../components/loader/loader";
 import TextField from "@mui/material/TextField";
+import api from "../api.js";
 
 
 export default function DoctorProfile() {
@@ -51,7 +52,7 @@ export default function DoctorProfile() {
 
     const onLogoutClick = async () => {
         try {
-            await axios.post("http://localhost:8080/logout", {}, { withCredentials: true });
+            await api.post("logout", {}, { withCredentials: true });
 
             setUser(null);
             navigate('/signin');
@@ -108,7 +109,7 @@ export default function DoctorProfile() {
             }
 
             parsedData.append("data", JSON.stringify(requiredData));
-            const res = await axios.put("http://localhost:8080/doctor/profileUpdate/", parsedData, { withCredentials: true });
+            const res = await api.put("/doctor/profileUpdate/", parsedData, { withCredentials: true });
             setFlash({ status: "success", message: res.data.message });
         } catch (error) {
             setData(user);
