@@ -14,7 +14,7 @@ export default function Navbar() {
 
     const onLogoutClick = async () => {
         try {
-            await api.post("http://localhost:8080/logout", {}, { withCredentials: true });
+            await api.post("/logout", {}, { withCredentials: true });
 
             setUser(null);
             setIsLogoHide(true);
