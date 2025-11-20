@@ -4,6 +4,7 @@ import './calender.css';
 import axios from 'axios';
 import { useAuth } from "../../context/authContext";
 import Loader from "../loader/loader";
+import api from "../api.js";
 
 
 const allSlots = ['9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00', '20:00 - 21:00', '21:00 - 22:00'];
@@ -38,7 +39,7 @@ export default function MyCalender({ flash, setFlash, setIsCalender }) {
         if (providedSlotes.date !== null && providedSlotes.slotes.length !== 0) {
             setShowLoader(true);
             try {
-                await axios.post("http://localhost:8080/doctor/provide_slotes", { doctor: user._id, ...providedSlotes }, { withCredentials: true });
+                await api.post("/doctor/provide_slotes", { doctor: user._id, ...providedSlotes }, { withCredentials: true });
                 setIsCalender(false);
                 setFlash(prev => ({ ...prev, status: "success", message: "Time Slote Added Successfully." }));
             } catch (error) {
