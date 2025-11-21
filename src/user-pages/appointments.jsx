@@ -4,7 +4,7 @@ import axios from "axios";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/loader/loader";
-import api from "../api.js";
+import api from "../../api.js";
 
 
 export default function UserAppointments() {
