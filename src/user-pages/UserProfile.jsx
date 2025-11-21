@@ -7,7 +7,7 @@ import Loader from "../components/loader/loader";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import api from "../api.js";
+import api from "../../api.js";
 
 export default function UserProfile() {
 
