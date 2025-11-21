@@ -5,7 +5,7 @@ import axios from "axios";
 import { useFetch } from "../context/fetchContext";
 import Book from "./Book";
 import FlashMsg from "../components/messages/FlashMsg";
-import api from "../../api.js";
+import api from "../api.js";
 
 
 export default function DoctorPage() {
