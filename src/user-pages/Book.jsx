@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext"
 import axios from "axios";
-import api from "../api.js";
+import api from "../../api.js";
 
 
 export default function Book({ setIsBookingWindowOpen, doctor, selectedDateAndTime, setFlash }) {
