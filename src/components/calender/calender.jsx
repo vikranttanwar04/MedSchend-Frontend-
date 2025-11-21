@@ -4,7 +4,7 @@ import './calender.css';
 import axios from 'axios';
 import { useAuth } from "../../context/authContext";
 import Loader from "../loader/loader";
-import api from "../api.js";
+import api from "../../api.js";
 
 
 const allSlots = ['9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '18:00 - 19:00', '19:00 - 20:00', '20:00 - 21:00', '21:00 - 22:00'];
