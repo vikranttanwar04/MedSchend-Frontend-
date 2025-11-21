@@ -5,7 +5,7 @@ import axios from "axios";
 import FlashMsg from "../components/messages/FlashMsg";
 import Loader from "../components/loader/loader";
 import TextField from "@mui/material/TextField";
-import api from "../api.js";
+import api from "../../api.js";
 
 
 export default function DoctorProfile() {
