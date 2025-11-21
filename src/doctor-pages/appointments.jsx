@@ -4,7 +4,7 @@ import axios from "axios";
 import { useAuth } from "../context/authContext";
 import Loader from "../components/loader/loader";
 import FlashMsg from "../components/messages/FlashMsg";
-import api from "../../api.js";
+import api from "../api.js";
 
 
 export default function DoctorAppointments() {
