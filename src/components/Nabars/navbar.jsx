@@ -3,7 +3,7 @@ import { useAuth } from "../../context/authContext";
 import axios from "axios";
 import { useState } from "react";
 import Logo from "./../../assets/medsched-logo.png";
-import api from "../api.js";
+import api from "../../api.js";
 
 
 export default function Navbar() {
