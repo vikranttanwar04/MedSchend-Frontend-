@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useAuth } from '../context/authContext';
 import FlashMsg from '../components/messages/FlashMsg';
 import Loader from '../components/loader/loader';
-import api from "../../api.js";
+import api from "../api.js";
 
 export default function DoctorDash() {
 
