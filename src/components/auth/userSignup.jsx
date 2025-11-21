@@ -102,7 +102,6 @@ export default function UserSignup() {
         event.preventDefault();
         validation2();
         const validationPassed = Object.keys(errors).length<7 ? false : Object.values(errors).every(value => value === "");
-        console.log(Object.values(errors));
         if(!validationPassed) return;
         setShowLoader(true);
 
