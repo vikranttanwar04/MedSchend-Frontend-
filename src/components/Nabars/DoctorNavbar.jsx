@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { useState } from "react";
 import Logo from "./../../assets/medsched-logo.png";
-import api from "../api.js";
+import api from "../../api.js";
 
 
 export default function DoctorNavbar() {
