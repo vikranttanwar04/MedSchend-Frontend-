@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import Filter from "../components/docFilter"
 import DocList from "../components/docList"
-// import data from "./../utils/data"
 import { useFilter } from "../context/filterContext";
-import axios from "axios";
 import { useFetch } from "../context/fetchContext";
 
 
