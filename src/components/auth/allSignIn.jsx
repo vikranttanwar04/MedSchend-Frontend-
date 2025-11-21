@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import FlashMsg from "./../messages/FlashMsg";
 import Loader from "../loader/loader";
-import api from "../api.js";
+import api from "../../api.js";
 
 
 export default function AllSignin() {
