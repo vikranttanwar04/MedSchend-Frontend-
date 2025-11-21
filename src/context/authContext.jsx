@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import axios from "axios";
-import api from "../api.js";
+import api from "../../api.js";
 
 const authContext = createContext();
 
