@@ -47,12 +47,12 @@ export default function AllSignin() {
             {
                 flash.message && <FlashMsg status={flash.status} msg={flash.message} setFlash={setFlash} />
             }
-            <form action={signUpFor?.user ? 'http://localhost:8080/patient/auth/login' : signUpFor?.doctor ? 'http://localhost:8080/doctor/auth/login' : null} method="post" className="p-3" onSubmit={onFormSubmit}>
+            <form className="p-3" onSubmit={onFormSubmit}>
                 <div className="w-[80%] flex flex-col gap-2 mx-auto">
 
                     <input className="border focus:outline-none px-3 py-2 rounded" type="email" name="email" placeholder={signUpFor.doctor? 'peter@gmail.com' : 'vikranttanwar124108@gmail.com'} value={data.email} onChange={onInputChange} required />
 
-                    <input className="border focus:outline-none px-3 py-2 rounded" type="password" name="password" placeholder={signUpFor.doctor? 'peter@123' : 'vikrant@123'} value={data.password} onChange={onInputChange} required />
+                    <input className="border focus:outline-none px-3 py-2 rounded" type="password" name="password" placeholder={signUpFor.doctor? 'Peter@123' : 'Vikrant@123'} value={data.password} onChange={onInputChange} required />
 
                     {
                         showLoader ? <button disabled={true}  className="px-3 py-2 rounded border hover:bg-[#5B74F7] hover:text-amber-50"><Loader loadingText="Fetching" /></button> :
