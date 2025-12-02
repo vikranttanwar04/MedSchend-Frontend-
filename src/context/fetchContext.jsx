@@ -16,6 +16,8 @@ const FetchProvider = ({ children }) => {
                 setAllDoctors(res.data);
             } catch (error) {
                 console.log(error);
+                const errMsg = error.response?.data?.message || error.message
+                alert(errMsg);
             }
         }
 
