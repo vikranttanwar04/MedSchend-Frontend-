@@ -24,7 +24,10 @@ export default function Doctors() {
                 allDoctors.length===0 && <Loader loadingText="Fetching Doctors" />
             }
             {
-                allDoctors.length!=0 && filteredDoctors.length > 0 ? <DocList doctors={filteredDoctors} /> : <div className="grow flex justify-center items-center"><h1 className="text-center">No doctor in this speciality yet!</h1></div>
+                allDoctors.length!=0 && filteredDoctors.length > 0 && <DocList doctors={filteredDoctors} />
+            }
+            {
+                allDoctors.length>0 && filteredDoctors.length === 0 && <div className="grow flex justify-center items-center"><h1 className="text-center">No doctor in this speciality yet!</h1></div>
             }
         </div>
     )
