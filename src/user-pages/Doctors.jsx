@@ -21,7 +21,7 @@ export default function Doctors() {
         <div className="min-h-screen pt-0 flex flex-col md:flex-row gap-1">
             <Filter />
             {
-                allDoctors.length===0 && <Loader loadingText="Fetching Doctors" />
+                allDoctors.length===0 && <div className="flex grow justify-center items-center"><Loader loadingText="Fetching Doctors" /></div>
             }
             {
                 allDoctors.length!=0 && filteredDoctors.length > 0 && <DocList doctors={filteredDoctors} />
